@@ -1,0 +1,95 @@
+<header>
+    <nav class="bg-neutral-800 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+            <a href="#" class="flex items-center mb-3 text-2xl font-semibold text-white dark:text-white">
+                BE SMARTER
+            </a>
+            <div class="flex items-center lg:order-2 space-x-4">
+                <button type="button" (click)="logout()"
+                    class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                    Log out
+                </button>
+                <button type="button" (click)="goToAccountPage()"
+                    class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 ml-4">
+                    Your account
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="relative py-16 bg-gradient-to-br from-sky-50 to-gray-200" style="min-height: 100vh;">
+    <div class="relative container m-auto px-6 text-gray-500 md:px-12 xl:px-40">
+        <div class="m-auto md:w-8/12 lg:w-6/12 xl:w-6/12">
+            <div class="rounded-xl bg-white shadow-xl">
+                <div class="p-6 sm:p-16">
+                    <div class="space-y-4">
+                        <h2 class="mb-8 text-3xl text-cyan-900 font-bold text-center">
+                            Choose
+                        </h2>
+                    </div>
+                    <div class="mt-16 grid space-y-4">
+                        <button (click)="getActionForDay()" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+                                    hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
+                            <div class="relative flex items-center space-x-4 justify-center">
+                                <a>
+                                    <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 
+                                    group-hover:text-blue-600 sm:text-base">
+                                        Day
+                                    </span>
+                                </a>
+                            </div>
+                        </button>
+                        <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
+                            (click)="getActionForWeek()" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+                                    hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
+                            <div class="relative flex items-center space-x-4 justify-center">
+                                <a>
+                                    <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 
+                                    group-hover:text-blue-600 sm:text-base">
+                                        Week
+                                    </span>
+                                </a>
+                            </div>
+                        </button>
+                        <button (click)="getActionForMonth()" class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 
+                                     hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
+                            <div class="relative flex items-center space-x-4 justify-center">
+                                <a>
+                                    <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 
+                                    group-hover:text-blue-600 sm:text-base">
+                                        Month
+                                    </span>
+                                </a>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal" data-te-modal-init
+    class="modal fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="flex items-center justify-center w-full h-full">
+        <div class="absolute bg-gray-900 opacity-75 inset-0"></div>
+        <div class="relative bg-white w-full max-w-md rounded-lg shadow-lg">
+            <div class="p-6 space-y-6">
+                <p id="modal-text" class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    We Add You New Action To Do.
+                </p>
+            </div>
+            <div class="flex items-center p-4 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button id="closeBtn" (click)="acceptAction()" data-modal-hide="defaultModal" type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Accept</button>
+                <button data-modal-hide="defaultModal" (click)="rejectAction()" type="button"
+                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                    Reject</button>
+            </div>
+        </div>
+    </div>
+</div>

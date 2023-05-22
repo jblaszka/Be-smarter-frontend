@@ -1,0 +1,91 @@
+<body class="bg-white dark:bg-gray-900">
+
+  <header>
+    <nav class="bg-neutral-800 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+        <a href="#" class="flex items-center mb-3 text-2xl font-semibold text-white dark:text-white">
+          BE SMARTER
+        </a>
+        <div class="flex items-center lg:order-2 space-x-4">
+          <button type="button" (click)="logout()"
+            class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+            Log out
+          </button>
+          <button type="button" (click)="mainPage()"
+            class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 ml-4">
+            Main Page
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section class="relative py-16 bg-gradient-to-br from-sky-50 to-gray-200" style="min-height: 100vh;">
+    
+    <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+      <div class="max-h-96 my-5">
+        <div *ngIf="activityToDo">
+          <button (click)="showActivityToDo()" class="text-xl text-gray-700 mb-4">Activity To Do</button>
+          <div class="bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+            <div class="overflow-x-auto" mdbScrollbar style="position: relative; max-height: 400px">
+              <table id="actions-to-do-table" class="w-full text-sm text-left text-gray-400">
+                <thead class="text-xs uppercase bg-gray-700 text-white">
+                  <th scope="col" class="px-4 py-3">Activity</th>
+                  <th scope="col" class="px-4 py-3">Points</th>
+                  <th scope="col" class="px-4 py-3">Expiration Date</th>
+                  <th scope="col" class="px-4 py-3">Expiration Time</th>
+                  <th scope="col" class="px-4 py-3">
+                    <span class="sr-only">Activity</span>
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let activity of activityToDo" class="max-rows-5">
+                    <td class="border-t px-4 py-3">{{ activity[1] }}</td>
+                    <td class="border-t px-4 py-3">{{ activity[4] }}</td>
+                    <td class="border-t px-4 py-3">{{ activity[2] }}</td>
+                    <td class="border-t px-4 py-3">{{ activity[3] }}</td>
+                    <td class="border-t px-4 py-3">
+                      <button (click)="makeActivityDone(activity[0])" class="text-white hover:text-white">Done!</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="text-in-table-activity-to-do" class="text-white text-xs text-center py-2 hidden">Click on table headers to
+              expand table.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+      <div class="max-h-96 my-5">
+        <div *ngIf="activityDone">
+          <button (click)="showActivityDone()" class="text-xl text-gray-700 mb-4">Activity Done</button>
+          <div class="bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+            <div class="overflow-x-auto" mdbScrollbar style="position: relative; max-height: 400px">
+              <table id="actions-done-table" class="w-full text-sm text-left text-gray-400" >
+                <thead class="text-xs uppercase bg-gray-700 text-white">
+                  <tr>
+                    <th scope="col" class="px-4 py-3">Activity</th>
+                    <th scope="col" class="px-4 py-3">Points</th>
+                    <th scope="col" class="px-4 py-3">Expiration Date</th>
+                    <th scope="col" class="px-4 py-3">Expiration Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let activity of activityDone">
+                    <td class="border-t px-4 py-3">{{ activity[0] }}</td>
+                    <td class="border-t px-4 py-3">{{ activity[3] }}</td>
+                    <td class="border-t px-4 py-3">{{ activity[1] }}</td>
+                    <td class="border-t px-4 py-3">{{ activity[2] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="text-in-table-activity-done" class="text-white text-xs text-center py-2 hidden">Click on table headers to
+              expand table.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
